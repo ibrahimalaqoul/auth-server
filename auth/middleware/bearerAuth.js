@@ -1,7 +1,7 @@
 'use strict';
 const {user}=require('../models/index');
 const JWT = require('jsonwebtoken');
-const SECRET = process.env.SECRET;
+const SECRET = process.env.SECRET || "my secret";
 
 const bearerAuth = async (req,res,next)=>{
   if (req.headers.authorization) {
