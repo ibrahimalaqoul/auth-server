@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const base64 = require('base-64');
 const { user } = require('../models/index');
 const JWT = require('jsonwebtoken')
-const SECRET = process.env.SECRET;
+const SECRET = process.env.SECRET  ;
 const basicAuth = async (req, res, next) => {
     try {
         if (req.headers.authorization) {
@@ -18,7 +18,7 @@ const basicAuth = async (req, res, next) => {
                 req.User = User // req ={user : user} 
                 console.log(req.User);
                 // generating the token
-                let newToken = JWT.sign({username:User.username},SECRET,{expiresIn : 900});//newToken 900s ==15min
+                let newToken = JWT.sign({username:User.username},SECRET,{expiresIn : 900000});//newToken 900000s ==15min
                 User.token=newToken;
                 res.status(200).json(User);
             } else {
