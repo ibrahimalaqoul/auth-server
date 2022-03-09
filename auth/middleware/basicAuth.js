@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const base64 = require('base-64');
 const { user } = require('../models/index');
 const JWT = require('jsonwebtoken')
-const SECRET = process.env.SECRET  ;
+const SECRET = process.env.SECRET || "my secret";
 const basicAuth = async (req, res, next) => {
     try {
         if (req.headers.authorization) {
